@@ -1,0 +1,1 @@
+All deliverable 2 requirements and links can be found in CSCC01 Deliverable 2.pdf
