@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window id="main" title="SQL INJECTORS TEST WINDOW" width="450" height="450"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <caption label="Hello world!" />
+	<caption label="This text should be in the main area"/>
+	<button label="Press Me"
+        oncommand="alert('I hate Junaid!');"/>
+  </window>
