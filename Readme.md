@@ -15,6 +15,6 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
-October 23, 2015 - v0.0a
-+Initial release
+October 23, 2015 - v0.0a <br />
++Initial release <br />
 +Added basic hello world GUI shell in 'actions' menu
