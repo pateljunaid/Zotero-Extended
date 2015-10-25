@@ -1,9 +1,9 @@
-Zotero.HelloWorldZotero = {
+Zotero.zoteroEXTended = {
 	DB: null,
 	
 	init: function () {
 		// Connect to (and create, if necessary) helloworld.sqlite in the Zotero directory
-		this.DB = new Zotero.DBConnection('helloworld');
+		this.DB = new Zotero.DBConnection('zoteroEXTended');
 		
 		if (!this.DB.tableExists('changes')) {
 			this.DB.query("CREATE TABLE changes (num INT)");
@@ -28,14 +28,15 @@ Zotero.HelloWorldZotero = {
 	},
 	
 	openWindow: function(){
-		window.openDialog('chrome://helloworldzotero/content/ui.xul',
-		'SQL INJECTORS TITLE','')
+		window.openDialog('chrome://zoteroEXTended/content/ui.xul',
+		'Zotero EXTended','')
 	},
 	
 	btnClick: function() {
-		Zotero.HelloWorldZotero.insertHello();
+		this.insertHello();
+		//Zotero.HelloWorldZotero.insertHello();
 	},
 };
 
 // Initialize the utility
-window.addEventListener('load', function(e) { Zotero.HelloWorldZotero.init(); }, false);
+window.addEventListener('load', function(e) { Zotero.zoteroEXTended.init(); }, false);

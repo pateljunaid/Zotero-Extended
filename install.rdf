@@ -4,7 +4,7 @@
 	
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>ZoteroExtended@zotero.org</em:id>
-		<em:name>Zotero Estended</em:name>
+		<em:name>Zotero EXTended</em:name>
 		<em:version>0.0.1</em:version>
 		<em:description>SQL Injectors' Zotero Plugin</em:description>
 		<em:creator>Group 2 (SQL Injectors)</em:creator>
