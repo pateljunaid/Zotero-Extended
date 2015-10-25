@@ -13,13 +13,11 @@
 	<menupopup id="zotero-tb-actions-popup">
 		<!-- Make sure the menu separator for utilities is visible -->
 		<menuseparator id="zotero-tb-actions-plugins-separator" hidden="false"/>
-		<menuitem insertbefore="zotero-tb-actions-separator" label="&helloworldzotero.name;"
-			oncommand="Zotero.HelloWorldZotero.insertHello()"/>
 		<menuitem insertbefore="zotero-tb-actions-seperator" label="SQL INJECTORS TEST"
 			oncommand="Zotero.HelloWorldZotero.openWindow()"/>
 	</menupopup>
 	
 	<!-- Include the main extension logic -->
 	<script src="chrome://zotero/content/include.js"/>
-	<script src="chrome://helloworldzotero/content/include.js" type="application/javascript;version=1.8"/>
+	<script src="chrome://helloworldzotero/content/include.js"/>
 </overlay>
