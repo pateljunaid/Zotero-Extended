@@ -6,10 +6,11 @@
 
 Simply install [ZoteroEXT.xpi](ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
 <br/>
-or to build it yourself:
-1. Clone repo
-2. zip the 'chrome' folder, chrome.manifest, and 'install.rdf'
-3. change the zip extension to 'xpi'
+<br/>
+or to build it yourself:<br/>
+1. Clone repo<br/>
+2. zip the 'chrome' folder, chrome.manifest, and 'install.rdf'<br/>
+3. change the zip extension to 'xpi'<br/>
 
 ## Features
 
