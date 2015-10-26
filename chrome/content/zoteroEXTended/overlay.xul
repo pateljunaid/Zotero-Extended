@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://zoteroEXTended/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://zoteroEXTended/locale/hello.dtd">
+
+<overlay id="zoteroEXTended-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="zoteroEXTended-strings"
+			src="chrome://zoteroEXTended/locale/hello.properties"/>
+	</stringbundleset>
+	
+	<menupopup id="zotero-tb-actions-popup">
+		<!-- Make sure the menu separator for utilities is visible -->
+		<menuseparator id="zotero-tb-actions-plugins-separator" hidden="false"/>
+		<menuitem insertbefore="zotero-tb-actions-seperator" label="Zotero EXTended"
+			oncommand="Zotero.zoteroEXTended.openWindow()"/>
+	</menupopup>
+	
+	<!-- Include the main extension logic -->
+	<script src="chrome://zotero/content/include.js"/>
+	<script src="chrome://zoteroEXTended/content/include.js"/>
+</overlay>

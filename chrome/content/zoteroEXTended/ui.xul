@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window id="main" title="Zotero EXTended Main Window" width="450" height="450"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<label value="Find Tag:"/>
+	<textbox type="search"/>
+	<button label="Search"
+        oncommand="Zotero.zoteroEXTended.btnClick()"/>
+		
+	<!-- Include the main extension logic -->
+	<script src="chrome://zotero/content/include.js"/>
+	<script src="chrome://zoteroEXTended/content/include.js"/>
+</window>
