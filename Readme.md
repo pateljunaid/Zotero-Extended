@@ -5,6 +5,11 @@
 ## Installation
 
 Simply install [ZoteroEXT.xpi](ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
+<br/>
+or to build it yourself:
+1. Clone repo
+2. zip the 'chrome' folder, chrome.manifest, and 'install.rdf'
+3. change the zip extension to 'xpi'
 
 ## Features
 
@@ -18,6 +23,7 @@ TODO: Write usage instructions
 October 25, 2015 - v0.01a <br />
 +Plugin name changed to 'ZoteroEXT' (short for 'ZoteroEXTended') <br />
 +Cleaned up code (Removed traces of Helloworld)<br/>
++Updated GUI shell (added tabs, added listbox example)
 <br/>
 October 23, 2015 - v0.00a <br />
 +Initial release <br />
