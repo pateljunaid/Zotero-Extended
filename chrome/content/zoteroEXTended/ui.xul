@@ -30,6 +30,7 @@
 				<box orient="horizontal">
 					<button label="Button 1" oncommand="alert('button 1');"/>
 					<button label="Button 2" oncommand="alert('button 2');"/>
+					<button label="Delete Tag" oncommand="alert('The given tag will be deleted from the selected entries');"/>
 				</box>
 				
 			</tabpanel>
