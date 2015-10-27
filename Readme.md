@@ -4,7 +4,7 @@
 
 ## Installation
 
-Simply install [ZoteroEXT.xpi](ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
+Simply install [ZoteroEXT.xpi v0.01a](https://github.com/CSCC01-Fall2015/team02-course-project/releases/download/0.01a/ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
 <br/>
 <br/>
 or to build it yourself:<br/>
