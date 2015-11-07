@@ -53,17 +53,17 @@
                 </tree>
             </tabpanel>
             
-            <tabpanel id="edit-tag-tab" orient="vertical">
-                <label id = "change-tag-label" value="Change tag name:" control="change-tag-textbox"/>
-                <textbox id="change-tag-textbox" placeholder="eg new_tag"/>
+            <tabpanel id="rename-tag-tab" orient="vertical">
+                <label id = "rename-tag-label" value="Rename tag:" control="rename-tag-textbox"/>
+                <textbox id="rename-tag-textbox" placeholder="eg new_tag_name"/>
                 <label value="Change to:"/>
                 <radiogroup>
-                    <radio id="change-tag-selecteditems-radio" label="Selected items" selected="true"/>
-                    <radio id="change-tag-bytag-radio" label="By tag"/>
+                    <radio id="rename-tag-selecteditems-radio" label="Selected items" selected="true"/>
+                    <radio id="rename-tag-bytag-radio" label="By tag"/>
                     <radio label="Some disabled option" disabled="true"/>
                 </radiogroup>
                 <box orient="horizontal">
-                    <button label="Apply" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
+                    <button label="Apply" oncommand="Zotero.zoteroEXTended.renameButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>
                 </box>
             </tabpanel>
