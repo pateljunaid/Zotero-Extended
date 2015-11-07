@@ -37,8 +37,7 @@ Zotero.zoteroEXTended = {
 	addButtonClick: function() {
 		var textbox = this.ZEXTwindow.document.getElementById('add-tag-textbox');
 		if (textbox.value != ""){
-			alert(textbox.value);
-			this.ZEXTwindow.focus(); //regain focus after alert window
+			this.ZEXTwindow.alert(textbox.value);
 			textbox.value = ""; //clear text box
 		}
 		else{
