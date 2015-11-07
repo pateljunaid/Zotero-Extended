@@ -53,8 +53,19 @@
                 </tree>
             </tabpanel>
             
-            <tabpanel id="feature3-tab" orient="vertical">
-                <label value = "Feature 3 goes in here"/>
+            <tabpanel id="edit-tag-tab" orient="vertical">
+                <label id = "change-tag-label" value="Change tag name:" control="change-tag-textbox"/>
+                <textbox id="change-tag-textbox" placeholder="eg new_tag"/>
+                <label value="Change to:"/>
+                <radiogroup>
+                    <radio id="change-tag-selecteditems-radio" label="Selected items" selected="true"/>
+                    <radio id="change-tag-bytag-radio" label="By tag"/>
+                    <radio label="Some disabled option" disabled="true"/>
+                </radiogroup>
+                <box orient="horizontal">
+                    <button label="Apply" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
+                    <button label="Cancel" oncommand="window.close();"/>
+                </box>
             </tabpanel>
         </tabpanels>
         
