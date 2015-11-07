@@ -21,14 +21,22 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
-November 7, 2015 <br />
-+Updated UI for adding tags
-+Added callback in ZoteroEXTended window
-October 25, 2015<br />
-+Plugin name changed to 'ZoteroEXT' (short for 'ZoteroEXTended') <br />
-+Cleaned up code (Removed traces of Helloworld)<br/>
+November 7, 2015 
+<br />
++Updated UI for adding tags 
+<br />
++Added callback in ZoteroEXTended window 
+<br />
+October 25, 2015
+<br />
++Plugin name changed to 'ZoteroEXT' (short for 'ZoteroEXTended') 
+<br />
++Cleaned up code (Removed traces of Helloworld)
+<br/>
 +Updated GUI shell (added tabs, added listbox example)
 <br/>
-October 23, 2015<br />
-+Initial release <br />
+October 23, 2015
+<br />
++Initial release 
+<br />
 +Added basic hello world GUI shell in 'actions' menu
