@@ -47,8 +47,8 @@ Zotero.zoteroEXTended = {
 		//Zotero.HelloWorldZotero.insertHello();
 	},
 	
-	editButtonClick: function() {
-                var textbox = this.ZEXTwindow.document.getElementById('edit-tag-textbox');
+	renameButtonClick: function() {
+                var textbox = this.ZEXTwindow.document.getElementById('rename-tag-textbox');
                 if (textbox.value != ""){
                         alert(textbox.value);
                         this.ZEXTwindow.focus(); //regain focus after alert window
