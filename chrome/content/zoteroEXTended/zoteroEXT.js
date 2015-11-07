@@ -46,6 +46,20 @@ Zotero.zoteroEXTended = {
 		this.insertHello();
 		//Zotero.HelloWorldZotero.insertHello();
 	},
+	
+	editButtonClick: function() {
+                var textbox = this.ZEXTwindow.document.getElementById('edit-tag-textbox');
+                if (textbox.value != ""){
+                        alert(textbox.value);
+                        this.ZEXTwindow.focus(); //regain focus after alert window
+                        textbox.value = ""; //clear text box
+                }
+                else{
+                        textbox.placeholder = "You forgot to give a tag!";
+                }
+                this.insertHello();
+                //Zotero.HelloWorldZotero.insertHello();
+        },
 };
 
 // Initialize the utility
