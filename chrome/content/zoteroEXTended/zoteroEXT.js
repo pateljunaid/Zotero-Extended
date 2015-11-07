@@ -28,11 +28,22 @@ Zotero.zoteroEXTended = {
 	},
 	
 	openWindow: function(){
-		window.openDialog('chrome://zoteroEXTended/content/ui.xul',
-		'Zotero EXTended','')
+		var strWindowFeatures = "resizable=no,chrome=yes,centerscreen=yes";
+		this.ZEXTwindow = window.openDialog('chrome://zoteroEXTended/content/ui.xul',
+		'Zotero EXTended',strWindowFeatures);
+		//win.getElementById('enter-new-tag-label').setAttribute("value","TESTESTEST");
 	},
 	
-	btnClick: function() {
+	addButtonClick: function() {
+		var textbox = this.ZEXTwindow.document.getElementById('add-tag-textbox');
+		if (textbox.value != ""){
+			alert(textbox.value);
+			this.ZEXTwindow.focus(); //regain focus after alert window
+			textbox.value = ""; //clear text box
+		}
+		else{
+			textbox.placeholder = "You forgot to give a tag!";
+		}
 		this.insertHello();
 		//Zotero.HelloWorldZotero.insertHello();
 	},

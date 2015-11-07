@@ -1,6 +1,6 @@
 # ZoteroEXTended
 
-![screenshot](http://i.imgur.com/QOeOiGD.png)
+![screenshot](http://i.imgur.com/LuefjsP.png)
 
 ## Installation
 
@@ -21,11 +21,14 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
-October 25, 2015 - v0.01a <br />
+November 7, 2015 <br />
++Updated UI for adding tags
++Added callback in ZoteroEXTended window
+October 25, 2015<br />
 +Plugin name changed to 'ZoteroEXT' (short for 'ZoteroEXTended') <br />
 +Cleaned up code (Removed traces of Helloworld)<br/>
 +Updated GUI shell (added tabs, added listbox example)
 <br/>
-October 23, 2015 - v0.00a <br />
+October 23, 2015<br />
 +Initial release <br />
 +Added basic hello world GUI shell in 'actions' menu
