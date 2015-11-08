@@ -67,6 +67,17 @@
                     <button label="Cancel" oncommand="window.close();"/>
                 </box>
             </tabpanel>
+            
+            <tabpanel id="merge-tag-tab" orient="vertical">
+                <label id = "merge-tag-label" value="Please enter tags that you want to merge:" control="merge-tag-textbox"/>
+                <textbox id="merge-tag-textbox" placeholder="eg. tag_1, tag_2, tag_3..."/>
+                <label id = "merge-new-tag" value="Please enter new tag name:" control="merge-new-tag-textbox"/>
+                <textbox id="merge-new-tag-textbox" placeholder="eg. new_tag_name"/>
+                <box orient="horizontal">
+                    <button label="Apply" oncommand="Zotero.zoteroEXTended.mergeButtonClick();"/>
+                    <button label="Cancel" oncommand="window.close();"/>
+                </box>
+            </tabpanel>
         </tabpanels>
         
     </tabbox>
