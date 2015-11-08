@@ -1,6 +1,9 @@
 Zotero.ExtBatch = {
 	
-	// Return an array of Zotero items that have a tag with value 'tag'
+	/**
+	* Return an array of Zotero items that have a tag with value tag
+	* @param {String} items - list of entries you want to add the tag to
+	*/
 	findIdsByTag: function(tag) {
 		// Initiliaze the search object and set the condition 
 		var s = new Zotero.Search();
@@ -11,18 +14,33 @@ Zotero.ExtBatch = {
 		return Zotero.Items.get(results);
 	},
 	
-	// Add a tag with the value of 'tag' to each item in 'items'
+	/**
+	* Add tag to the given Zotero entries
+	* @param {ZoteroItem[]} items - list of entries you want to add the tag to
+	* @param {String} tag - the tag you want to add
+	*/
 	addTags: function(items, tag) {
+		// loop through each item and add the tag to it
 		items.forEach(function(entry) {
-			// add a tag to each item
 			entry.addTag(tag);
 		});
 	},
 	
-	removeTags: function(items, tag) {
-		items.forEach(function(entry) {
-			// remove the tag from each item
-			// entry.removeTag(tag); - not working
-		});
-	}
+	/**
+	* Remove given tags from all entries in Zotero
+	* @param {String[]} tags - list of tags you want to remove
+	*/
+	removeTags: function(tags) {
+		var ids = []; // List of the ids of the tags we want to remove
+		var allTags = Zotero.Tags.search();
+		tags = tags.map(tag => tag.toLowerCase());
+		// Loop through all the tags
+		for (var id in allTags) {
+			// If the tag is one of the ones we want to remove, add its id to ids
+			if (tags.indexOf(allTags[id].name.toLowerCase()) != -1) {
+			  ids.push(id);
+			}
+		}
+		Zotero.Tags.erase(ids);
+	},
 };
