@@ -68,6 +68,12 @@
 			
 			<tabpanel id="edit-tag-tab" orient="vertical">
 				<label value = "Please edit the requested tags:"/>
+
+				<caption label = "Tag name"/>
+				<richlistbox id="edit-tag-list" width="200" height="200">
+				</richlistbox>
+
+				<!--
 				<listbox id="edit-tag-list">
 					  <listhead>
 						<listheader label="Tag name" width="120"/>
@@ -78,7 +84,7 @@
 						<listcol flex="1"/>
 					  </listcols>
 				</listbox>
-				
+				-->
                 <box orient="horizontal">
                     <button label="Apply" oncommand="alert('does nothing yet!');"/>
                     <button label="Cancel" oncommand="window.close();"/>
