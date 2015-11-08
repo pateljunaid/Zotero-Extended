@@ -21,10 +21,12 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
-November 7, 2015 
+November 8, 2015 
 <br />
 +Updated UI for delete/edit tags
+<br />
 +Tags now show in a checkbox list
+<br />
 November 7, 2015 
 <br />
 +Updated UI for adding tags 
