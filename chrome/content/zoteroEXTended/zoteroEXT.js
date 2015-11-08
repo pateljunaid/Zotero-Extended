@@ -47,6 +47,40 @@ Zotero.zoteroEXTended = {
 		this.insertHello();
 		//Zotero.HelloWorldZotero.insertHello();
 	},
+	
+	
+	/*
+	Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
+	*/
+	loadTags: function(){
+		var removeList = this.ZEXTwindow.document.getElementById('remove-tag-list');
+		var editList = this.ZEXTwindow.document.getElementById('edit-tag-list');
+		// Search for all tags
+		var allTags = Zotero.Tags.search();
+		for (var id in allTags){
+			currentTag = allTags[id].name;
+			// Create row for remove-tag list ------------------------------
+			var row = this.ZEXTwindow.document.createElement('listitem');
+			row.setAttribute('label', currentTag);
+			row.setAttribute('type', 'checkbox');
+
+			
+			// Create row for edit-tag list -----------------------------------
+			var row2 = this.ZEXTwindow.document.createElement('listitem');
+			var cell2 = this.ZEXTwindow.document.createElement('listcell');
+			cell2.setAttribute('label', currentTag);
+			row2.appendChild(cell2);
+			
+			cell2 = document.createElement('listcell');
+			cell2.setAttribute('label',  '-99');
+			row2.appendChild(cell2);
+			
+			// Add the rows to the respective listbox's
+			removeList.appendChild(row);
+			editList.appendChild(row2);
+		}
+		//alert(Zotero.Tags.getAll());
+	}
 };
 
 // Initialize the utility

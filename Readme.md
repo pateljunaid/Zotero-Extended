@@ -23,6 +23,10 @@ TODO: Write usage instructions
 ## Changelog
 November 7, 2015 
 <br />
++Updated UI for delete/edit tags
++Tags now show in a checkbox list
+November 7, 2015 
+<br />
 +Updated UI for adding tags 
 <br />
 +Added callback in ZoteroEXTended window 

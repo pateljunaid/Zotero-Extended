@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window id="main" title="Zotero EXTended Main Window" width="300" height="250"
+<window id="main" title="Zotero EXTended Main Window" width="300" height="250" onload="Zotero.zoteroEXTended.loadTags();"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <tabbox>
         <tabs>
@@ -26,9 +26,9 @@
             </tabpanel>
             
             <tabpanel id="feature2-tab" orient="vertical">
+				<!--
                 <label value = "Feature 2 goes in here"/>
                 <tree flex="1" rows="2">
-
                   <treecols>
                         <treecol id="sender" label="Sender" flex="1"/>
                         <treecol id="subject" label="Subject" flex="2"/>
@@ -49,45 +49,42 @@
                               </treerow>
                         </treeitem>
                   </treechildren>
-
                 </tree>
+				-->
+				<label value = "Please select tags to be deleted:"/>
+				
+				<groupbox flex="1">
+				<caption label = "Tag name"/>
+				<listbox id="remove-tag-list">
+					<!-- listitem tags will be populated in here-->
+				</listbox>
+				</groupbox>
+				
+                <box orient="horizontal">
+                    <button label="Delete" oncommand="alert('does nothing yet')"/>
+                    <button label="Cancel" oncommand="window.close();"/>
+                </box>
             </tabpanel>
 			
-			<tabpanel id="remove-tag-tab" orient="vertical">
-                <listbox>
-				    <listhead>
-					    <listheader label="Tag Name" />
-				    </listhead>
-					
-					<script type="application/x-javascript">
-						<![CDATA[
-							function makeListItems() {
-								var tag_list = Zotero.Tags.getAll;
-								var menu = document.getElementById('menu');
-								var list = document.getElementById('list');
-								for (i = 0; i < tag_list.length; ++i) {
-									menu.appendItem(tag_list[i], tag_list[i].toLowerCase());
-									list.appendItem(tag_list[i], tag_list[i].toLowerCase());
-								}
-								menu.selectedIndex = 0;
-								list.selectedIndex = 0;
-							}
-							window.addEventListener('load', makeListItems, true);
-						]]>
-					</script>
-					<menulist id="menu" />
-					<listbox id="list" />
-
+			<tabpanel id="edit-tag-tab" orient="vertical">
+				<label value = "Please edit the requested tags:"/>
+				<listbox id="edit-tag-list">
+					  <listhead>
+						<listheader label="Tag name" width="120"/>
+						<listheader label="Auxiliary Info" width="120"/>
+					</listhead>
+					  <listcols>
+						<listcol/>
+						<listcol flex="1"/>
+					  </listcols>
 				</listbox>
+				
                 <box orient="horizontal">
-                    <button label="Apply" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
+                    <button label="Apply" oncommand="alert('does nothing yet!');"/>
                     <button label="Cancel" oncommand="window.close();"/>
                 </box>
             </tabpanel>
             
-            <tabpanel id="feature3-tab" orient="vertical">
-                <label value = "Feature 3 goes in here"/>
-            </tabpanel>
         </tabpanels>
             
         
