@@ -43,4 +43,18 @@ Zotero.ExtBatch = {
 		}
 		Zotero.Tags.erase(ids);
 	},
+	
+	/**
+	* Renames the given tag to newName
+	* @param {String} tag - the tag you want to rename
+	* @param {String} newName - the new name of the tag
+	*/
+	renameTag: function(tag, newName) {
+		// get a list of all the items with that tag
+		var items = this.findIdsByTag(tag);
+		// remove the tag from all items
+		this.removeTags([tag]);
+		// add the new tag to the items that had tag
+		this.addTags(items, newName);
+	}
 };
