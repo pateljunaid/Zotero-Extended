@@ -60,6 +60,30 @@ Zotero.zoteroEXTended = {
                 this.insertHello();
                 //Zotero.HelloWorldZotero.insertHello();
         },
+        
+        mergeButtonClick: function() {
+                var textbox1 = this.ZEXTwindow.document.getElementById('merge-tag-textbox');
+                var textbox2 = this.ZEXTwindow.document.getElementById('merge-new-tag-textbox');
+                if (textbox1.value != ""){
+                        alert(textbox1.value);
+                        this.ZEXTwindow.focus(); //regain focus after alert window
+                        textbox1.value = ""; //clear text box
+                }
+                else{
+                        textbox1.placeholder = "You forgot to give tags!";
+                }
+
+                if (textbox2.value != ""){
+                        alert(textbox2.value);
+                        this.ZEXTwindow.focus(); //regain focus after alert window
+                        textbox2.value = ""; //clear text box
+                }
+                else{
+                        textbox2.placeholder = "You forgot to give new tag name!";
+                }
+                this.insertHello();
+                //Zotero.HelloWorldZotero.insertHello();
+        },
 };
 
 // Initialize the utility
