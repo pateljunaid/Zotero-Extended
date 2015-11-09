@@ -27,6 +27,8 @@ November 8, 2015
 <br />
 +Tags now show in a checkbox list
 <br />
++Adding tags is now functional for selected items & tag specific items.
+<br />
 November 7, 2015 
 <br />
 +Updated UI for adding tags 
