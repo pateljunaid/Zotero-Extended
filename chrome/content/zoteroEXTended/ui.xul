@@ -38,9 +38,9 @@
                 </groupbox>
                 <!-- buttons bellow here -->
                 <box orient="horizontal">
-                    <button label="Delete" oncommand="alert('does nothing yet')"/>
+                    <button label="Delete" oncommand="Zotero.ExtBatch.removeTags();"/>
                     <button label="Cancel" oncommand="window.close();"/>
-                    <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
+                    <button label="Refresh" oncommand="Zotero.zoteroEXTended.loadTags();"/>
                 </box>
             </tabpanel>
           
