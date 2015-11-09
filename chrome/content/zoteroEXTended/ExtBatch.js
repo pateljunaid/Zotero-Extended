@@ -62,13 +62,35 @@ Zotero.ExtBatch = {
 	
 	/**
 	* Merge given tags tags to newName
-	* @param {String[]} tags - the list of tags you want to merge
-	* @param {String} newName - the name of the tags that they'll merge to
 	*/
-	mergeTags: function(tags, newName) {
+	mergeTags: function() {
 		// Loop through all the tags and rename them to newName
-		tags.forEach(function(tag) {
-			entry.addTag(tag);
-		});
+		//tags.forEach(function(tag) {
+		//	entry.addTag(tag);
+		//});
+		
+		//This code is inefficient.. will fix it up later
+		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
+		
+		var newName = prompt("Please enter the new tag name");
+		
+		for (var i = 0; i < tags.length; i++) {
+			var items = this.findIdsByTag(tags[i]);
+			this.addTags(items, newName);
+		}
+		
+		var ids = []; // List of the ids of the tags we want to remove
+		var allTags = Zotero.Tags.search();
+		tags = tags.map(tag => tag.toLowerCase());
+		// Loop through all the tags
+		for (var id in allTags) {
+			// If the tag is one of the ones we want to remove, add its id to ids
+			if (tags.indexOf(allTags[id].name.toLowerCase()) != -1) {
+			  ids.push(id);
+			}
+		}
+		Zotero.Tags.erase(ids);
+		Zotero.zoteroEXTended.loadTags(); //Not working!
+
 	}
 };
