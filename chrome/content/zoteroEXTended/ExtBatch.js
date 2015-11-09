@@ -10,17 +10,17 @@ Zotero.ExtBatch = {
 		s.addCondition('tag', 'is', tag);
 		// Execute the search, results is an array of id's
 		var results = s.search();
-		// return a list of Zotero items	
+		// Return a list of Zotero items
 		return Zotero.Items.get(results);
 	},
 	
 	/**
 	* Add tag to the given Zotero entries
-	* @param {ZoteroItem[]} items - list of entries you want to add the tag to
+	* @param {Zotero.Item[]} items - list of entries you want to add the tag to
 	* @param {String} tag - the tag you want to add
 	*/
 	addTags: function(items, tag) {
-		// loop through each item and add the tag to it
+		// Loop through each item and add the tag to it
 		items.forEach(function(entry) {
 			entry.addTag(tag);
 		});
@@ -50,11 +50,23 @@ Zotero.ExtBatch = {
 	* @param {String} newName - the new name of the tag
 	*/
 	renameTag: function(tag, newName) {
-		// get a list of all the items with that tag
+		// Get a list of all the items with that tag
 		var items = this.findIdsByTag(tag);
-		// remove the tag from all items
+		// Remove the tag from all items
 		this.removeTags([tag]);
-		// add the new tag to the items that had tag
+		// Add the new tag to the items that had tag
 		this.addTags(items, newName);
+	},
+	
+	/**
+	* Merge given tags tags to newName
+	* @param {String[]} tags - the list of tags you want to merge
+	* @param {String} newName - the name of the tags that they'll merge to
+	*/
+	mergeTags: function(tags, newName) {
+		// Loop through all the tags and rename them to newName
+		tags.forEach(function(tag) {
+			entry.addTag(tag);
+		});
 	}
 };
