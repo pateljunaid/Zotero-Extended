@@ -30,7 +30,8 @@ Zotero.ExtBatch = {
 	* Remove given tags from all entries in Zotero
 	* @param {String[]} tags - list of tags you want to remove
 	*/
-	removeTags: function(tags) {
+	removeTags: function() {
+		var tags = Zotero.zoteroEXTended.getSelectedTags('remove-tag-list');
 		var ids = []; // List of the ids of the tags we want to remove
 		var allTags = Zotero.Tags.search();
 		tags = tags.map(tag => tag.toLowerCase());
@@ -42,6 +43,7 @@ Zotero.ExtBatch = {
 			}
 		}
 		Zotero.Tags.erase(ids);
+		Zotero.zoteroEXTended.loadTags(); //Not working!
 	},
 	
 	/**
