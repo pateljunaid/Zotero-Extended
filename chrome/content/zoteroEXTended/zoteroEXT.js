@@ -75,6 +75,7 @@ Zotero.zoteroEXTended = {
 			mergeList.removeChild(mergeList.firstChild);
 		
 		// Search for all tags
+		//Zotero.Tags.reloadAll()
 		var allTags = Zotero.Tags.search();
 		for (var id in allTags){
 			currentTag = allTags[id].name;

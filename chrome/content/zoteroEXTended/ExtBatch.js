@@ -42,7 +42,12 @@ Zotero.ExtBatch = {
 			  ids.push(id);
 			}
 		}
+		
+		Zotero.DB.beginTransaction();
 		Zotero.Tags.erase(ids);
+		Zotero.Tags.purge();
+		Zotero.DB.commitTransaction();
+		
 		Zotero.zoteroEXTended.loadTags(); //Not working!
 	},
 	
