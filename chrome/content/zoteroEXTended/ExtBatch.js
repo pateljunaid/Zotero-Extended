@@ -30,8 +30,7 @@ Zotero.ExtBatch = {
 	* Remove given tags from all entries in Zotero
 	* @param {String[]} tags - list of tags you want to remove
 	*/
-	removeTags: function() {
-		var tags = Zotero.zoteroEXTended.getSelectedTags('remove-tag-list');
+	removeTags: function(tags) {
 		var ids = []; // List of the ids of the tags we want to remove
 		var allTags = Zotero.Tags.search();
 		tags = tags.map(tag => tag.toLowerCase());
@@ -66,15 +65,17 @@ Zotero.ExtBatch = {
 	},
 	
 	/**
+	* Renames the given tag to newName
+	*/
+	//detectChanges: function() {
+	//	var tags = //Zotero.zoteroEXTended.getChangedTags('edit-tag-list');
+		
+	//},
+	
+	/**
 	* Merge given tags tags to newName
 	*/
 	mergeTags: function() {
-		// Loop through all the tags and rename them to newName
-		//tags.forEach(function(tag) {
-		//	entry.addTag(tag);
-		//});
-		
-		//This code is inefficient.. will fix it up later
 		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
 		
 		var newName = Zotero.zoteroEXTended.ZEXTwindow.prompt("Please enter the new tag name");
@@ -84,22 +85,7 @@ Zotero.ExtBatch = {
 			this.addTags(items, newName);
 		}
 		
-		var ids = []; // List of the ids of the tags we want to remove
-		var allTags = Zotero.Tags.search();
-		tags = tags.map(tag => tag.toLowerCase());
-		// Loop through all the tags
-		for (var id in allTags) {
-			// If the tag is one of the ones we want to remove, add its id to ids
-			if (tags.indexOf(allTags[id].name.toLowerCase()) != -1) {
-			  ids.push(id);
-			}
-		}
-		
-		Zotero.DB.beginTransaction();
-		Zotero.Tags.erase(ids); // erase the ID's
-		Zotero.Tags.purge();
-		Zotero.DB.commitTransaction();
-		
+		this.removeTags(tags);
 		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
 
 	}
