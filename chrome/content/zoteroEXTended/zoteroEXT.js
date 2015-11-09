@@ -49,6 +49,7 @@ Zotero.zoteroEXTended = {
 	loadTags: function() {
 		var removeList = this.ZEXTwindow.document.getElementById('remove-tag-list');
 		var editList = this.ZEXTwindow.document.getElementById('edit-tag-list');
+		var mergeList = this.ZEXTwindow.document.getElementById('merge-tags-list');
 		// Search for all tags
 		var allTags = Zotero.Tags.search();
 		for (var id in allTags){
@@ -68,6 +69,7 @@ Zotero.zoteroEXTended = {
 			
 			// Add the rows to the respective listbox's
 			removeList.appendChild(row);
+			mergeList.appendChild(row);
 			editList.appendChild(row2);
 		}
 	}
