@@ -7,6 +7,7 @@
             <tab label="Add tag"/>
             <tab label="Remove tag"/>
             <tab label="Edit tag"/>
+			<tab label="Merge tags"/>
         </tabs>
         
         <tabpanels>
@@ -56,6 +57,24 @@
 					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
+			
+			<tabpanel id="merge-tab" orient="vertical">
+				<label value = "Please select tags to be merged:"/>
+				
+				<groupbox flex="1">
+				<caption label = "Tag name"/>
+				<listbox id="merge-tag-list">
+					<!-- listitem tags will be populated in here-->
+				</listbox>
+				</groupbox>
+				
+                <box orient="horizontal">
+                    <button label="Merge" oncommand="prompt('Please enter the new tag name');"/>
+                    <button label="Cancel" oncommand="window.close();"/>
+					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
+                </box>
+            </tabpanel>
+			
         </tabpanels>
 		
     </tabbox>
