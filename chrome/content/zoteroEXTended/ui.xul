@@ -45,7 +45,7 @@
             </tabpanel>
            
             <tabpanel id="edit-tag-tab" orient="vertical">
-                <label value = "Please edit the requested tags:"/>
+				<label value = "Please edit the requested tags:"/>
                 <groupbox flex="1">
                     <caption label = "Tag name"/>
                     <richlistbox id="edit-tag-list" width="200" height="200">
@@ -63,14 +63,14 @@
 				<label value = "Please select tags to be merged:"/>
 				
 				<groupbox flex="1">
-				<caption label = "Tag name"/>
-				<listbox id="merge-tag-list">
-					<!-- listitem tags will be populated in here-->
-				</listbox>
+					<caption label = "Tag name"/>
+					<listbox id="merge-tag-list">
+						<!-- listitem tags will be populated in here-->
+					</listbox>
 				</groupbox>
 				
                 <box orient="horizontal">
-                    <button label="Merge" oncommand="prompt('Please enter the new tag name');"/>
+                    <button label="Merge" oncommand="prompt('Please enter the new tag name (does nothing yet!)');"/>
                     <button label="Cancel" oncommand="window.close();"/>
 					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
