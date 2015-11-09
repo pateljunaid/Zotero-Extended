@@ -1,6 +1,6 @@
 # ZoteroEXTended
 
-![screenshot](http://i.imgur.com/LuefjsP.png)
+![screenshot](http://i.imgur.com/qooTFVi.png)
 
 ## Installation
 
@@ -23,7 +23,7 @@ TODO: Write usage instructions
 ## Changelog
 November 8, 2015 
 <br />
-+Updated UI for delete/edit tags
++Updated UI for delete/edit/merge tags
 <br />
 +Tags now show in a checkbox list
 <br />
