@@ -42,6 +42,23 @@ Zotero.zoteroEXTended = {
 		}
 	},
 	
+	/**
+	* Get the list of selected tags to be merged and the name of the new tag
+	*@param {String} id - the id of the object being passed in
+	*/
+	getSelectedTags: function(id) {
+		var list = this.ZEXTwindow.document.getElementById(id).children;
+		var selected = [];
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked){
+				selected.push(list[i].label);
+			}
+		}
+		
+		return selected;
+		
+	},
+	
 	/*
 	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
 	*/
@@ -49,6 +66,14 @@ Zotero.zoteroEXTended = {
 		var removeList = this.ZEXTwindow.document.getElementById('remove-tag-list');
 		var editList = this.ZEXTwindow.document.getElementById('edit-tag-list');
 		var mergeList = this.ZEXTwindow.document.getElementById('merge-tag-list');
+		
+		while (removeList.firstChild)
+			removeList.removeChild(removeList.firstChild);
+		while (editList.firstChild)
+			editList.removeChild(editList.firstChild);
+		while (mergeList.firstChild)
+			mergeList.removeChild(mergeList.firstChild);
+		
 		// Search for all tags
 		var allTags = Zotero.Tags.search();
 		for (var id in allTags){
