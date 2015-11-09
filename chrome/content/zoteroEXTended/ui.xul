@@ -70,7 +70,7 @@
                 </groupbox>
                
                 <box orient="horizontal">
-                    <button label="Merge" oncommand="prompt('Please enter the new tag name (does nothing yet!)');"/>
+                    <button label="Merge" oncommand="Zotero.ExtBatch.mergeTags();"/>
                     <button label="Cancel" oncommand="window.close();"/>
                     <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
