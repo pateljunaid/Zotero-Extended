@@ -19,6 +19,7 @@
                     <radio id="add-tag-bytag-radio" label="By tag"/>
                     <radio label="Some disabled option" disabled="true"/>
                 </radiogroup>
+				<textbox id="add-tag-select-by-tag" placeholder="eg science"/>
                 <box orient="horizontal">
                     <button label="Apply" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>

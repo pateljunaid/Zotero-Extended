@@ -21,9 +21,19 @@ Zotero.zoteroEXTended = {
 	},
 	
 	addButtonClick: function() {
+		// Get controls from the window
 		var textbox = this.ZEXTwindow.document.getElementById('add-tag-textbox');
+		var selectedRadio = this.ZEXTwindow.document.getElementById('add-tag-selecteditems-radio');
+		var selectByTag = this.ZEXTwindow.document.getElementById('add-tag-select-by-tag');
+		
 		if (textbox.value != "") {
-			Zotero.ExtBatch.addTags(this.getSelectedItems(), textbox.value);
+			var items;
+			if (selectedRadio.selected)
+				items = this.getSelectedItems(); // Get the selected items
+			else
+				items = Zotero.ExtBatch.findIdsByTag(selectByTag.value); // Get the items by tag
+			
+			Zotero.ExtBatch.addTags(items, textbox.value);
 			alert("Tag was successfully added");
 			this.ZEXTwindow.focus(); //regain focus after alert window
 			textbox.value = ""; //clear text box
