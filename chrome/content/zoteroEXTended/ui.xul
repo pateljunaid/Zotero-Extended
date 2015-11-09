@@ -63,6 +63,7 @@
                 <box orient="horizontal">
                     <button label="Delete" oncommand="alert('does nothing yet')"/>
                     <button label="Cancel" oncommand="window.close();"/>
+					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
 			
@@ -88,6 +89,7 @@
                 <box orient="horizontal">
                     <button label="Apply" oncommand="alert('does nothing yet!');"/>
                     <button label="Cancel" oncommand="window.close();"/>
+					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
             
