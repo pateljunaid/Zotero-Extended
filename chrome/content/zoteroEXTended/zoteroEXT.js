@@ -76,7 +76,7 @@ Zotero.zoteroEXTended = {
 		
 		// Search for all tags
 		//Zotero.Tags.reloadAll()
-		var allTags = Zotero.Tags.search();
+		var allTags = Zotero.Tags.getAll();
 		for (var id in allTags){
 			currentTag = allTags[id].name;
 			// Create row for remove-tag list ------------------------------

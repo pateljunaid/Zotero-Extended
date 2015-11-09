@@ -44,11 +44,11 @@ Zotero.ExtBatch = {
 		}
 		
 		Zotero.DB.beginTransaction();
-		Zotero.Tags.erase(ids);
+		Zotero.Tags.erase(ids); // erase the ID's
 		Zotero.Tags.purge();
 		Zotero.DB.commitTransaction();
 		
-		Zotero.zoteroEXTended.loadTags(); //Not working!
+		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
 	},
 	
 	/**
@@ -77,7 +77,7 @@ Zotero.ExtBatch = {
 		//This code is inefficient.. will fix it up later
 		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
 		
-		var newName = prompt("Please enter the new tag name");
+		var newName = Zotero.zoteroEXTended.ZEXTwindow.prompt("Please enter the new tag name");
 		
 		for (var i = 0; i < tags.length; i++) {
 			var items = this.findIdsByTag(tags[i]);
@@ -94,8 +94,13 @@ Zotero.ExtBatch = {
 			  ids.push(id);
 			}
 		}
-		Zotero.Tags.erase(ids);
-		Zotero.zoteroEXTended.loadTags(); //Not working!
+		
+		Zotero.DB.beginTransaction();
+		Zotero.Tags.erase(ids); // erase the ID's
+		Zotero.Tags.purge();
+		Zotero.DB.commitTransaction();
+		
+		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
 
 	}
 };
