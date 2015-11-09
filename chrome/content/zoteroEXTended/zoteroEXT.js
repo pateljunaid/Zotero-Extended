@@ -44,7 +44,7 @@ Zotero.zoteroEXTended = {
 	},
 	
 	/*
-	Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
+	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
 	*/
 	loadTags: function() {
 		var removeList = this.ZEXTwindow.document.getElementById('remove-tag-list');
@@ -58,31 +58,18 @@ Zotero.zoteroEXTended = {
 			row.setAttribute('label', currentTag);
 			row.setAttribute('type', 'checkbox');
 
-			
 			// Create row for edit-tag list -----------------------------------
 			var row2 = this.ZEXTwindow.document.createElement('richlistitem');
 			var textbox = this.ZEXTwindow.document.createElement('textbox');
 			textbox.setAttribute('placeholder', 'new tag name');
 			textbox.setAttribute('value', currentTag);
 			textbox.setAttribute('onfocus', "this.select();"); //hightlight box when clicked
-			//row2.appendItem(currentTag);
 			row2.appendChild(textbox);
-			
-			
-			//var row2 = this.ZEXTwindow.document.createElement('listitem');
-			//var cell = this.ZEXTwindow.document.createElement('listcell');
-			//var textbox = this.ZEXTwindow.document.createElement('textbox');
-			//cell.setAttribute('label', currentTag);
-			//textbox.setAttribute('placeholder', 'new tag name');
-			//row2.appendChild(cell);
-			//row2.appendChild(textbox);
-			
 			
 			// Add the rows to the respective listbox's
 			removeList.appendChild(row);
 			editList.appendChild(row2);
 		}
-		//alert(Zotero.Tags.getAll());
 	}
 };
 

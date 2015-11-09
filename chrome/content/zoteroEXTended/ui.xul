@@ -27,40 +27,14 @@
             </tabpanel>
             
             <tabpanel id="feature2-tab" orient="vertical">
-				<!--
-                <label value = "Feature 2 goes in here"/>
-                <tree flex="1" rows="2">
-                  <treecols>
-                        <treecol id="sender" label="Sender" flex="1"/>
-                        <treecol id="subject" label="Subject" flex="2"/>
-                  </treecols>
-
-                  <treechildren>
-                        <treeitem>
-                              <treerow>
-                                    <treecell label="joe@somewhere.com"/>
-                                    <treecell label="Top secret plans"/>
-                              </treerow>
-                        </treeitem>
-                        
-                        <treeitem>
-                              <treerow>
-                                    <treecell label="mel@whereever.com"/>
-                                    <treecell label="Let's do lunch"/>
-                              </treerow>
-                        </treeitem>
-                  </treechildren>
-                </tree>
-				-->
 				<label value = "Please select tags to be deleted:"/>
-				
 				<groupbox flex="1">
-				<caption label = "Tag name"/>
-				<listbox id="remove-tag-list">
-					<!-- listitem tags will be populated in here-->
-				</listbox>
+					<caption label = "Tag name"/>
+					<listbox id="remove-tag-list">
+						<!-- listitem tags will be populated in here-->
+					</listbox>
 				</groupbox>
-				
+				<!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Delete" oncommand="alert('does nothing yet')"/>
                     <button label="Cancel" oncommand="window.close();"/>
@@ -70,33 +44,20 @@
 			
 			<tabpanel id="edit-tag-tab" orient="vertical">
 				<label value = "Please edit the requested tags:"/>
-
-				<caption label = "Tag name"/>
-				<richlistbox id="edit-tag-list" width="200" height="200">
-				</richlistbox>
-
-				<!--
-				<listbox id="edit-tag-list">
-					  <listhead>
-						<listheader label="Tag name" width="120"/>
-						<listheader label="Auxiliary Info" width="120"/>
-					</listhead>
-					  <listcols>
-						<listcol/>
-						<listcol flex="1"/>
-					  </listcols>
-				</listbox>
-				-->
+				<groupbox flex="1">
+					<caption label = "Tag name"/>
+					<richlistbox id="edit-tag-list" width="200" height="200">
+					</richlistbox>
+				</groupbox>
+				<!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Apply" oncommand="alert('does nothing yet!');"/>
                     <button label="Cancel" oncommand="window.close();"/>
 					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
-            
         </tabpanels>
-            
-        
+		
     </tabbox>
     <!-- Include the main extension logic -->
     <script src="chrome://zotero/content/include.js"/>
