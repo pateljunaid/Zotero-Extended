@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window id="main" title="Zotero EXTended Main Window" width="300" height="250" onload="Zotero.zoteroEXTended.loadTags();"
+<window id="main" title="Zotero EXTended Main Window" width="300" height="350" onload="Zotero.zoteroEXTended.loadTags();"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <tabbox>
         <tabs>
@@ -8,56 +8,57 @@
             <tab label="Remove tag"/>
             <tab label="Edit tag"/>
         </tabs>
-        
+       
         <tabpanels>
             <tabpanel id="add-tag-tab" orient="vertical">
-                <label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
-                <textbox id="add-tag-textbox" placeholder="eg science"/>
-                <label value="Add to:"/>
-                <radiogroup>
-                    <radio id="add-tag-selecteditems-radio" label="Selected items" selected="true"/>
-                    <radio id="add-tag-bytag-radio" label="By tag"/>
-                    <radio label="Some disabled option" disabled="true"/>
-                </radiogroup>
-				<textbox id="add-tag-select-by-tag" placeholder="eg science"/>
-                <box orient="horizontal">
-                    <button label="Apply" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
+                <groupbox width="250" height="260" orient="vertical">
+					<label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
+					<textbox id="add-tag-textbox" placeholder="eg science"/>
+					<label value="Add to:"/>
+					<radiogroup>
+						<radio id="add-tag-selecteditems-radio" label="Selected items"  selected="true" oncommand="window.document.getElementById('add-tag-select-by-tag').setAttribute('disabled', 'true');"/>
+						<radio id="add-tag-bytag-radio" label="Items with existing tag:" oncommand="window.document.getElementById('add-tag-select-by-tag').setAttribute('disabled', 'false');"/>
+					</radiogroup>
+					<textbox id="add-tag-select-by-tag" placeholder="existing tag, eg history" disabled="true"/>
+                </groupbox>
+                <hbox  align="center">
+                    <button label="Add" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>
-                </box>
+                </hbox>
             </tabpanel>
-            
+           
             <tabpanel id="feature2-tab" orient="vertical">
-				<label value = "Please select tags to be deleted:"/>
-				<groupbox flex="1">
-					<caption label = "Tag name"/>
-					<listbox id="remove-tag-list">
-						<!-- listitem tags will be populated in here-->
-					</listbox>
-				</groupbox>
-				<!-- buttons bellow here -->
+                <label value = "Please select tags to be deleted:"/>
+                <groupbox flex="1">
+                    <caption label = "Tag name"/>
+                    <listbox id="remove-tag-list">
+                        <!-- listitem tags will be populated in here-->
+                    </listbox>
+                </groupbox>
+                <!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Delete" oncommand="alert('does nothing yet')"/>
                     <button label="Cancel" oncommand="window.close();"/>
-					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
+                    <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
-			
-			<tabpanel id="edit-tag-tab" orient="vertical">
-				<label value = "Please edit the requested tags:"/>
-				<groupbox flex="1">
-					<caption label = "Tag name"/>
-					<richlistbox id="edit-tag-list" width="200" height="200">
-					</richlistbox>
-				</groupbox>
-				<!-- buttons bellow here -->
+           
+            <tabpanel id="edit-tag-tab" orient="vertical">
+                <label value = "Please edit the requested tags:"/>
+                <groupbox flex="1">
+                    <caption label = "Tag name"/>
+                    <richlistbox id="edit-tag-list" width="200" height="200">
+                    </richlistbox>
+                </groupbox>
+                <!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Apply" oncommand="alert('does nothing yet!');"/>
                     <button label="Cancel" oncommand="window.close();"/>
-					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
+                    <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
         </tabpanels>
-		
+       
     </tabbox>
     <!-- Include the main extension logic -->
     <script src="chrome://zotero/content/include.js"/>

@@ -34,9 +34,8 @@ Zotero.zoteroEXTended = {
 				items = Zotero.ExtBatch.findIdsByTag(selectByTag.value); // Get the items by tag
 			
 			Zotero.ExtBatch.addTags(items, textbox.value);
-			alert("Tag was successfully added");
-			this.ZEXTwindow.focus(); //regain focus after alert window
-			textbox.value = ""; //clear text box
+			this.ZEXTwindow.alert("Tag was successfully added");
+			textbox.value = ""; // clear text box after adding tag
 		}
 		else {
 			textbox.placeholder = "You forgot to give a tag!";
@@ -59,16 +58,16 @@ Zotero.zoteroEXTended = {
 			row.setAttribute('type', 'checkbox');
 
 			// Create row for edit-tag list -----------------------------------
-			var row2 = this.ZEXTwindow.document.createElement('richlistitem');
+			//var row2 = this.ZEXTwindow.document.createElement('richlistitem');
 			var textbox = this.ZEXTwindow.document.createElement('textbox');
 			textbox.setAttribute('placeholder', 'new tag name');
 			textbox.setAttribute('value', currentTag);
-			textbox.setAttribute('onfocus', "this.select();"); //hightlight box when clicked
-			row2.appendChild(textbox);
+			textbox.setAttribute('onfocus', "this.select();"); // hightlight box when clicked
+			//row2.appendChild(textbox);
 			
 			// Add the rows to the respective listbox's
 			removeList.appendChild(row);
-			editList.appendChild(row2);
+			editList.appendChild(textbox);
 		}
 	}
 };
