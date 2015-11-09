@@ -7,27 +7,27 @@
             <tab label="Add tag"/>
             <tab label="Remove tag"/>
             <tab label="Edit tag"/>
-			<tab label="Merge tags"/>
+            <tab label="Merge tags"/>
         </tabs>
-       
+      
         <tabpanels>
             <tabpanel id="add-tag-tab" orient="vertical">
                 <groupbox width="250" height="260" orient="vertical">
-					<label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
-					<textbox id="add-tag-textbox" placeholder="eg science"/>
-					<label value="Add to:"/>
-					<radiogroup>
-						<radio id="add-tag-selecteditems-radio" label="Selected items"  selected="true" oncommand="window.document.getElementById('add-tag-select-by-tag').setAttribute('disabled', 'true');"/>
-						<radio id="add-tag-bytag-radio" label="Items with existing tag:" oncommand="window.document.getElementById('add-tag-select-by-tag').setAttribute('disabled', 'false');"/>
-					</radiogroup>
-					<textbox id="add-tag-select-by-tag" placeholder="existing tag, eg history" disabled="true"/>
+                    <label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
+                    <textbox id="add-tag-textbox" placeholder="eg science"/>
+                    <label value="Add to:"/>
+                    <radiogroup>
+                        <radio id="add-tag-selecteditems-radio" label="Selected items"  selected="true" oncommand="window.document.getElementById('add-tag-select-by-tag').disabled = true;"/>
+                        <radio id="add-tag-bytag-radio" label="Items with existing tag:" oncommand="window.document.getElementById('add-tag-select-by-tag').disabled = false;"/>
+                    </radiogroup>
+                    <textbox id="add-tag-select-by-tag" placeholder="existing tag, eg history" disabled="true"/>
                 </groupbox>
                 <hbox  align="center">
                     <button label="Add" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>
                 </hbox>
             </tabpanel>
-           
+          
             <tabpanel id="feature2-tab" orient="vertical">
                 <label value = "Please select tags to be deleted:"/>
                 <groupbox flex="1">
@@ -43,9 +43,9 @@
                     <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
-           
+          
             <tabpanel id="edit-tag-tab" orient="vertical">
-				<label value = "Please edit the requested tags:"/>
+                <label value = "Please edit the requested tags:"/>
                 <groupbox flex="1">
                     <caption label = "Tag name"/>
                     <richlistbox id="edit-tag-list" width="200" height="200">
@@ -58,28 +58,29 @@
                     <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
-			
-			<tabpanel id="merge-tab" orient="vertical">
-				<label value = "Please select tags to be merged:"/>
-				
-				<groupbox flex="1">
-					<caption label = "Tag name"/>
-					<listbox id="merge-tag-list">
-						<!-- listitem tags will be populated in here-->
-					</listbox>
-				</groupbox>
-				
+           
+            <tabpanel id="merge-tab" orient="vertical">
+                <label value = "Please select tags to be merged:"/>
+               
+                <groupbox flex="1">
+                    <caption label = "Tag name"/>
+                    <listbox id="merge-tag-list">
+                        <!-- listitem tags will be populated in here-->
+                    </listbox>
+                </groupbox>
+               
                 <box orient="horizontal">
                     <button label="Merge" oncommand="prompt('Please enter the new tag name (does nothing yet!)');"/>
                     <button label="Cancel" oncommand="window.close();"/>
-					<button label="Refresh" oncommand="alert('This should update the list of entries');"/>
+                    <button label="Refresh" oncommand="alert('This should update the list of entries');"/>
                 </box>
             </tabpanel>
-			
+           
         </tabpanels>
-       
+      
     </tabbox>
     <!-- Include the main extension logic -->
     <script src="chrome://zotero/content/include.js"/>
     <script src="chrome://zoteroEXTended/content/include.js"/>
 </window>
+
