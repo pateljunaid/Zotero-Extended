@@ -42,6 +42,44 @@ Zotero.zoteroEXTended = {
 		}
 	},
 	
+	/**
+	* Get the list of selected tags to be merged and the name of the new tag
+	*@param {String} id - the id of the object being passed in
+	*/
+	getSelectedTags: function(id) {
+		var list = this.ZEXTwindow.document.getElementById(id).children;
+		var selected = [];
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked){
+				selected.push(list[i].label);
+			}
+		}
+		
+		return selected;
+		
+	},
+
+
+	/**
+	* Get the list of selected tags to be merged and the name of the new tag
+	*@param {String} id - the id of the object being passed in
+	*/
+
+	//Doesn't work yet...very close, something needs to be changed
+	runRenameTag: function(id) {
+		var allTags = Zotero.Tags.getAll();
+		var list = this.ZEXTwindow.document.getElementById(id).childNodes;
+		for (var i = 0; i < list.length; i++) {
+			alert(allTags[list[i].id].name);
+			if (allTags[list[i].id].name != list[i].value){
+				Zotero.ExtBatch.renameTag(list[i].id, list[i].value);
+				Zotero.zoteroEXTended.loadTags();
+			}
+		}
+	},
+
+
+
 	/*
 	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
 	*/
@@ -49,15 +87,24 @@ Zotero.zoteroEXTended = {
 		var removeList = this.ZEXTwindow.document.getElementById('remove-tag-list');
 		var editList = this.ZEXTwindow.document.getElementById('edit-tag-list');
 		var mergeList = this.ZEXTwindow.document.getElementById('merge-tag-list');
+		
+		while (removeList.firstChild)
+			removeList.removeChild(removeList.firstChild);
+		while (editList.firstChild)
+			editList.removeChild(editList.firstChild);
+		while (mergeList.firstChild)
+			mergeList.removeChild(mergeList.firstChild);
+		
 		// Search for all tags
-		var allTags = Zotero.Tags.search();
+		//Zotero.Tags.reloadAll()
+		var allTags = Zotero.Tags.getAll();
 		for (var id in allTags){
 			currentTag = allTags[id].name;
 			// Create row for remove-tag list ------------------------------
 			var row = this.ZEXTwindow.document.createElement('listitem');
 			row.setAttribute('label', currentTag);
 			row.setAttribute('type', 'checkbox');
-			
+				
 			// Create row for merge-tag list ------------------------------
 			var row1 = this.ZEXTwindow.document.createElement('listitem');
 			row1.setAttribute('label', currentTag);
@@ -68,6 +115,7 @@ Zotero.zoteroEXTended = {
 			var textbox = this.ZEXTwindow.document.createElement('textbox');
 			textbox.setAttribute('placeholder', 'new tag name');
 			textbox.setAttribute('value', currentTag);
+			textbox.setAttribute('id', id);
 			textbox.setAttribute('onfocus', "this.select();"); // hightlight box when clicked
 			//row2.appendChild(textbox);
 			

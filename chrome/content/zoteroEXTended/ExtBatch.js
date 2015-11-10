@@ -41,7 +41,13 @@ Zotero.ExtBatch = {
 			  ids.push(id);
 			}
 		}
-		Zotero.Tags.erase(ids);
+		
+		Zotero.DB.beginTransaction();
+		Zotero.Tags.erase(ids); // erase the ID's
+		Zotero.Tags.purge();
+		Zotero.DB.commitTransaction();
+		
+		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
 	},
 	
 	/**
@@ -59,14 +65,28 @@ Zotero.ExtBatch = {
 	},
 	
 	/**
-	* Merge given tags tags to newName
-	* @param {String[]} tags - the list of tags you want to merge
-	* @param {String} newName - the name of the tags that they'll merge to
+	* Renames the given tag to newName
 	*/
-	mergeTags: function(tags, newName) {
-		// Loop through all the tags and rename them to newName
-		tags.forEach(function(tag) {
-			entry.addTag(tag);
-		});
+	//detectChanges: function() {
+	//	var tags = //Zotero.zoteroEXTended.getChangedTags('edit-tag-list');
+		
+	//},
+	
+	/**
+	* Merge given tags tags to newName
+	*/
+	mergeTags: function() {
+		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
+		
+		var newName = Zotero.zoteroEXTended.ZEXTwindow.prompt("Please enter the new tag name");
+		
+		for (var i = 0; i < tags.length; i++) {
+			var items = this.findIdsByTag(tags[i]);
+			this.addTags(items, newName);
+		}
+		
+		this.removeTags(tags);
+		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
+
 	}
 };
