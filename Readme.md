@@ -4,13 +4,17 @@
 
 ## Installation
 
-Simply install [ZoteroEXT.xpi](https://github.com/CSCC01-Fall2015/team02-course-project/releases/download/0.01a/ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
-<br/>
-<br/>
-or to build it yourself:<br/>
+###Simply install [ZoteroEXT.xpi](https://github.com/CSCC01-Fall2015/team02-course-project/releases/download/0.01a/ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
+###You may also choose to build it yourself:
+####Manually:
 1. Clone repo<br/>
 2. zip the 'chrome' folder, chrome.manifest, and 'install.rdf'<br/>
-3. change the zip extension to 'xpi'<br/>
+3. change the zip extension to 'xpi'
+####Or using our script:
+Windows: (from a command prompt)<br/>
+```generate_xpi.bat```<br/>
+Linux/Mac: <br/>
+``` sh generate_xpi.sh```
 
 ## Features
 
@@ -21,6 +25,12 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
+November 11, 2015 
+<br />
++Delete feature now fully functional
+<br />
++Merge feature now fully functional
+<br />
 November 8, 2015 
 <br />
 +Updated UI for delete/edit/merge tags
