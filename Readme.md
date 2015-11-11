@@ -9,7 +9,7 @@
 ####Manually:
 1. Clone repo<br/>
 2. zip the 'chrome' folder, chrome.manifest, and 'install.rdf'<br/>
-3. change the .zip extension to .xpi
+3. change the .zip extension to '.xpi'<br/>
 ####Or using our script:
 Windows: (from a command prompt)<br/>
 ```generate_xpi.bat```<br/>
