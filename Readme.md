@@ -17,9 +17,10 @@
 #### Or using our script:
 
 Windows: (from a command prompt)<br/>
-```generate_xpi.bat```<br/>
+`generate_xpi.bat`
+<br/>
 Linux/Mac: <br/>
-``` sh generate_xpi.sh```
+`sh generate_xpi.sh`
 
 ## Features
 
