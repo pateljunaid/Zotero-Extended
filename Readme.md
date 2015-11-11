@@ -4,13 +4,18 @@
 
 ## Installation
 
-###Simply install [ZoteroEXT.xpi](https://github.com/CSCC01-Fall2015/team02-course-project/releases/download/0.01a/ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
-###You may also choose to build it yourself:
-####Manually:
+### Simply install [ZoteroEXT.xpi](https://github.com/CSCC01-Fall2015/team02-course-project/releases/download/0.01a/ZoteroEXT.xpi) addon file to Zotero standalone or firefox.
+
+### You may also choose to build it yourself:
+
+#### Manually:
+
 1. Clone repo<br/>
 2. zip the 'chrome' folder, chrome.manifest, and 'install.rdf'<br/>
 3. change the .zip extension to '.xpi'<br/>
-####Or using our script:
+
+#### Or using our script:
+
 Windows: (from a command prompt)<br/>
 ```generate_xpi.bat```<br/>
 Linux/Mac: <br/>
@@ -25,6 +30,7 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
+
 November 11, 2015 
 <br />
 +Delete feature now fully functional
