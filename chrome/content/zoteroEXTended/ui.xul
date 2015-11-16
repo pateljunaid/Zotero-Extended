@@ -38,7 +38,7 @@
                 </groupbox>
                 <!-- buttons bellow here -->
                 <box orient="horizontal">
-                    <button label="Delete" oncommand="Zotero.ExtBatch.removeTags();"/>
+                    <button label="Delete" oncommand="Zotero.zoteroEXTended.removeButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>
                     <button label="Refresh" oncommand="Zotero.zoteroEXTended.loadTags();"/>
                 </box>

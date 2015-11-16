@@ -42,6 +42,11 @@ Zotero.zoteroEXTended = {
 		}
 	},
 	
+	removeButtonClick: function() {
+		var selected = this.getSelectedTags('remove-tag-list');
+		Zotero.ExtBatch.removeTags(selected);
+	},
+	
 	/**
 	* Get the list of selected tags to be merged and the name of the new tag
 	*@param {String} id - the id of the object being passed in
