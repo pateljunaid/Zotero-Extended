@@ -66,16 +66,23 @@ Zotero.zoteroEXTended = {
 	*/
 
 	//Doesn't work yet...very close, something needs to be changed
-	runRenameTag: function(id) {
+	//only the first tag is updated because of the renameTag function in line 82
+	runRenameTag: function(target) {
 		var allTags = Zotero.Tags.getAll();
-		var list = this.ZEXTwindow.document.getElementById(id).childNodes;
+		var list = this.ZEXTwindow.document.getElementById(target).childNodes;
 		for (var i = 0; i < list.length; i++) {
-			alert(allTags[list[i].id].name);
-			if (allTags[list[i].id].name != list[i].value){
-				Zotero.ExtBatch.renameTag(list[i].id, list[i].value);
-				Zotero.zoteroEXTended.loadTags();
+			alert(i);
+			alert(list[i].id);
+			alert(list[i].value);
+			if (list[i].id != list[i].value){
+				alert("changed");
+				
+	//Bug: The below line somehow resets field values to the original tag name
+	//So, then the if statement in line 77 evaluates to false because the two //values are the same
+				Zotero.ExtBatch.renameTag(list[i].id, list[i].value);	
 			}
 		}
+		Zotero.zoteroEXTended.loadTags();
 	},
 
 
@@ -115,7 +122,7 @@ Zotero.zoteroEXTended = {
 			var textbox = this.ZEXTwindow.document.createElement('textbox');
 			textbox.setAttribute('placeholder', 'new tag name');
 			textbox.setAttribute('value', currentTag);
-			textbox.setAttribute('id', id);
+			textbox.setAttribute('id', currentTag);
 			textbox.setAttribute('onfocus', "this.select();"); // hightlight box when clicked
 			//row2.appendChild(textbox);
 			

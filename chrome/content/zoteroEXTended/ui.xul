@@ -53,7 +53,7 @@
                 </groupbox>
                 <!-- buttons bellow here -->
                 <box orient="horizontal">
-                    <button label="Apply" oncommand="alert('does nothing yet!');"/>
+                    <button label="Apply" oncommand="Zotero.zoteroEXTended.runRenameTag('edit-tag-list');"/>
                     <button label="Cancel" oncommand="window.close();"/>
                     <button label="Refresh" oncommand="Zotero.zoteroEXTended.loadTags();"/>
                 </box>
