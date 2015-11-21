@@ -64,28 +64,20 @@ Zotero.zoteroEXTended = {
 	* Get the list of selected tags to be merged and the name of the new tag
 	*@param {String} id - the id of the object being passed in
 	*/
-
-	//Doesn't work yet...very close, something needs to be changed
-	//only the first tag is updated because of the renameTag function in line 82
 	runRenameTag: function(target) {
+		var dict = {}; // create an empty dictionary
 		var allTags = Zotero.Tags.getAll();
 		var list = this.ZEXTwindow.document.getElementById(target).childNodes;
 		for (var i = 0; i < list.length; i++) {
-			alert(i);
-			alert(list[i].id);
-			alert(list[i].value);
 			if (list[i].id != list[i].value){
-				alert("changed");
-				
-	//Bug: The below line somehow resets field values to the original tag name
-	//So, then the if statement in line 77 evaluates to false because the two //values are the same
-				Zotero.ExtBatch.renameTag(list[i].id, list[i].value);	
+				dict[list[i].id] = list[i].value;
 			}
+		}
+		for (var key in dict) {
+			Zotero.ExtBatch.renameTag(key, dict[key]);
 		}
 		Zotero.zoteroEXTended.loadTags();
 	},
-
-
 
 	/*
 	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
