@@ -1,87 +1,86 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window id="main" title="Zotero EXTended Main Window" width="300" height="250"
+<window id="main" title="Zotero EXTended Main Window" width="300" height="350" onload="Zotero.zoteroEXTended.loadTags();"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <tabbox>
         <tabs>
             <tab label="Add tag"/>
             <tab label="Remove tag"/>
             <tab label="Edit tag"/>
+            <tab label="Merge tags"/>
         </tabs>
-        
+      
         <tabpanels>
             <tabpanel id="add-tag-tab" orient="vertical">
-                <label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
-                <textbox id="add-tag-textbox" placeholder="eg science"/>
-                <label value="Add to:"/>
-                <radiogroup>
-                    <radio id="add-tag-selecteditems-radio" label="Selected items" selected="true"/>
-                    <radio id="add-tag-bytag-radio" label="By tag"/>
-                    <radio label="Some disabled option" disabled="true"/>
-                </radiogroup>
-                <box orient="horizontal">
-                    <button label="Apply" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
+                <groupbox width="250" height="260" orient="vertical">
+                    <label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
+                    <textbox id="add-tag-textbox" placeholder="eg science"/>
+                    <label value="Add to:"/>
+                    <radiogroup>
+                        <radio id="add-tag-selecteditems-radio" label="Selected items"  selected="true" oncommand="window.document.getElementById('add-tag-select-by-tag').disabled = true;"/>
+                        <radio id="add-tag-bytag-radio" label="Items with existing tag:" oncommand="window.document.getElementById('add-tag-select-by-tag').disabled = false;"/>
+                    </radiogroup>
+                    <textbox id="add-tag-select-by-tag" placeholder="existing tag, eg history" disabled="true"/>
+                </groupbox>
+                <hbox  align="center">
+                    <button label="Add" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>
-                </box>
+                </hbox>
             </tabpanel>
-            
+          
             <tabpanel id="feature2-tab" orient="vertical">
-                <label value = "Feature 2 goes in here"/>
-                <tree flex="1" rows="2">
-
-                  <treecols>
-                        <treecol id="sender" label="Sender" flex="1"/>
-                        <treecol id="subject" label="Subject" flex="2"/>
-                  </treecols>
-
-                  <treechildren>
-                        <treeitem>
-                              <treerow>
-                                    <treecell label="joe@somewhere.com"/>
-                                    <treecell label="Top secret plans"/>
-                              </treerow>
-                        </treeitem>
-                        
-                        <treeitem>
-                              <treerow>
-                                    <treecell label="mel@whereever.com"/>
-                                    <treecell label="Let's do lunch"/>
-                              </treerow>
-                        </treeitem>
-                  </treechildren>
-
-                </tree>
-            </tabpanel>
-            
-            <tabpanel id="rename-tag-tab" orient="vertical">
-                <label id = "rename-tag-label" value="Rename tag:" control="rename-tag-textbox"/>
-                <textbox id="rename-tag-textbox" placeholder="eg new_tag_name"/>
-                <label value="Change to:"/>
-                <radiogroup>
-                    <radio id="rename-tag-selecteditems-radio" label="Selected items" selected="true"/>
-                    <radio id="rename-tag-bytag-radio" label="By tag"/>
-                    <radio label="Some disabled option" disabled="true"/>
-                </radiogroup>
+                <label value = "Please select tags to be deleted:"/>
+                <groupbox flex="1">
+                    <caption label = "Tag name"/>
+                    <listbox id="remove-tag-list">
+                        <!-- listitem tags will be populated in here-->
+                    </listbox>
+                </groupbox>
+                <!-- buttons bellow here -->
                 <box orient="horizontal">
-                    <button label="Apply" oncommand="Zotero.zoteroEXTended.renameButtonClick();"/>
+                    <button label="Delete" oncommand="Zotero.zoteroEXTended.removeButtonClick();"/>
                     <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Refresh" oncommand="Zotero.zoteroEXTended.loadTags();"/>
                 </box>
             </tabpanel>
-            
-            <tabpanel id="merge-tag-tab" orient="vertical">
-                <label id = "merge-tag-label" value="Please enter tags that you want to merge:" control="merge-tag-textbox"/>
-                <textbox id="merge-tag-textbox" placeholder="eg. tag_1, tag_2, tag_3..."/>
-                <label id = "merge-new-tag" value="Please enter new tag name:" control="merge-new-tag-textbox"/>
-                <textbox id="merge-new-tag-textbox" placeholder="eg. new_tag_name"/>
+          
+            <tabpanel id="edit-tag-tab" orient="vertical">
+                <label value = "Please edit the requested tags:"/>
+                <groupbox flex="1">
+                    <caption label = "Tag name"/>
+                    <richlistbox id="edit-tag-list" width="200" height="200">
+                    </richlistbox>
+                </groupbox>
+                <!-- buttons bellow here -->
                 <box orient="horizontal">
-                    <button label="Apply" oncommand="Zotero.zoteroEXTended.mergeButtonClick();"/>
+                    <button label="Apply" oncommand="alert('does nothing yet!');"/>
                     <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Refresh" oncommand="Zotero.zoteroEXTended.loadTags();"/>
                 </box>
             </tabpanel>
+           
+            <tabpanel id="merge-tab" orient="vertical">
+                <label value = "Please select tags to be merged:"/>
+               
+                <groupbox flex="1">
+                    <caption label = "Tag name"/>
+                    <listbox id="merge-tag-list">
+                        <!-- listitem tags will be populated in here-->
+                    </listbox>
+                </groupbox>
+               
+                <box orient="horizontal">
+                    <button label="Merge" oncommand="Zotero.ExtBatch.mergeTags();"/>
+                    <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Refresh" oncommand="Zotero.zoteroEXTended.loadTags();"/>
+                </box>
+            </tabpanel>
+           
         </tabpanels>
-        
+      
     </tabbox>
     <!-- Include the main extension logic -->
     <script src="chrome://zotero/content/include.js"/>
     <script src="chrome://zoteroEXTended/content/include.js"/>
 </window>
+
