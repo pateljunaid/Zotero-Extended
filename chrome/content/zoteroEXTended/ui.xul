@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window id="main" title="Zotero EXTended Main Window" width="300" height="350" onload="Zotero.zoteroEXTended.loadTags();"
+<window id="main" title="ZoteroEXT - Batch edit tags" width="300" height="350" onload="Zotero.zoteroEXTended.loadTags();"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <tabbox>
         <tabs>
@@ -25,7 +25,7 @@
                 </groupbox>
                 <hbox  align="center">
                     <button label="Add" oncommand="Zotero.zoteroEXTended.addButtonClick();"/>
-                    <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Close" oncommand="window.close();"/>
                 </hbox>
             </tabpanel>
 
@@ -42,7 +42,7 @@
                 <!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Delete" oncommand="Zotero.zoteroEXTended.removeButtonClick();"/>
-                    <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Close" oncommand="window.close();"/>
                 </box>
             </tabpanel>
 
@@ -58,7 +58,7 @@
                 <!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Apply" oncommand="Zotero.zoteroEXTended.runRenameTag('edit-tag-list');"/>
-                    <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Close" oncommand="window.close();"/>
                 </box>
             </tabpanel>
 
@@ -75,7 +75,7 @@
 		<!-- buttons bellow here -->
                 <box orient="horizontal">
                     <button label="Merge" oncommand="Zotero.ExtBatch.mergeTags();"/>
-                    <button label="Cancel" oncommand="window.close();"/>
+                    <button label="Close" oncommand="window.close();"/>
                 </box>
             </tabpanel>
         </tabpanels>
