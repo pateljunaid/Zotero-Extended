@@ -4,4 +4,5 @@ if (!Zotero.zoteroEXTended) {
 					.getService(Components.interfaces.mozIJSSubScriptLoader);
 	loader.loadSubScript("chrome://zoteroEXTended/content/zoteroEXT.js");
 	loader.loadSubScript("chrome://zoteroEXTended/content/ExtBatch.js");
+	loader.loadSubScript("chrome://zoteroEXTended/content/cslEdit.js");
 }
