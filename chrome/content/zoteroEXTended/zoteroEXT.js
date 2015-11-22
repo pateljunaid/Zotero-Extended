@@ -48,6 +48,8 @@ Zotero.zoteroEXTended = {
 	},
 	
 	removeButtonClick: function() {
+		//clear the search box
+		this.ZEXTwindow.document.getElementById('remove-tag-textbox').value ="";
 		var selected = this.getSelectedTags('remove-tag-list');
 		Zotero.ExtBatch.removeTags(selected);
 	},
@@ -73,6 +75,8 @@ Zotero.zoteroEXTended = {
 	*@param {String} id - the id of the object being passed in
 	*/
 	runRenameTag: function(target) {
+		//clear the search box
+		this.ZEXTwindow.document.getElementById('edit-tag-textbox').value ="";
 		var dict = {}; // create an empty dictionary
 		var allTags = Zotero.Tags.getAll();
 		var list = this.ZEXTwindow.document.getElementById(target).childNodes;
@@ -101,6 +105,7 @@ Zotero.zoteroEXTended = {
 		searchTag = this.ZEXTwindow.document.getElementById(textboxId).value;
 		var list = this.ZEXTwindow.document.getElementById(id);
 		
+		//Clear all tags from the tab
 		while (list.firstChild)
 			list.removeChild(list.firstChild);
 		

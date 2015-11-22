@@ -78,6 +78,8 @@ Zotero.ExtBatch = {
 	* Merge given tags tags to newName
 	*/
 	mergeTags: function() {
+		//Clear the search box
+		Zotero.zoteroEXTended.ZEXTwindow.document.getElementById('merge-tag-textbox').value ="";
 		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
 		
 		var newName = Zotero.zoteroEXTended.ZEXTwindow.prompt("Please enter the new tag name");
