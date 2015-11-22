@@ -11,7 +11,11 @@ Zotero.ExtBatch = {
 		// Execute the search, results is an array of id's
 		var results = s.search();
 		// Return a list of Zotero items
-		return Zotero.Items.get(results);
+		var items = Zotero.Items.get(results);
+		// if not items were found it will be false, so replace it by an empty list
+		if (items == false)
+			items = [];
+		return items;
 	},
 	
 	/**

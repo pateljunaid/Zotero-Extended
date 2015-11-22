@@ -33,9 +33,14 @@ Zotero.zoteroEXTended = {
 			else
 				items = Zotero.ExtBatch.findIdsByTag(selectByTag.value); // Get the items by tag
 			
-			Zotero.ExtBatch.addTags(items, textbox.value);
-			this.ZEXTwindow.alert("Tag was successfully added");
-			textbox.value = ""; // clear text box after adding tag
+			if (items.length == 0)
+				this.ZEXTwindow.alert("No items selected");
+			else {
+				Zotero.ExtBatch.addTags(items, textbox.value);
+				this.ZEXTwindow.alert("Tag was successfully added");
+				textbox.value = ""; // clear text box after adding tag
+				this.loadTags(); // Refresh list of tags
+			}
 		}
 		else {
 			textbox.placeholder = "You forgot to give a tag!";
@@ -76,10 +81,13 @@ Zotero.zoteroEXTended = {
 				dict[list[i].id] = list[i].value;
 			}
 		}
+		var count = 0;
 		for (var key in dict) {
 			Zotero.ExtBatch.renameTag(key, dict[key]);
+			count += 1;
 		}
 		Zotero.zoteroEXTended.loadTags();
+		this.ZEXTwindow.alert(count + " tags successfully renamed");
 	},
 	
 	/*
