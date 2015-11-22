@@ -37,7 +37,6 @@ November 21, 2015
 <br />
 +Custom output styles feature implemented
 <br />
-<br />
 +Submenu added to group ZoteroEXT features
 <br />
 November 11, 2015 
