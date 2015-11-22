@@ -13,13 +13,23 @@
 	<menupopup id="zotero-tb-actions-popup">
 		<!-- Make sure the menu separator for utilities is visible -->
 		<menuseparator id="zotero-tb-actions-plugins-separator" hidden="false"/>
-		<menuitem insertbefore="zotero-tb-actions-seperator" label="Zotero EXTended"
-			oncommand="Zotero.zoteroEXTended.openWindow()"/>
-		<menuitem insertbefore="zotero-tb-actions-seperator" label="Zotero EXTended:CSL"
-		oncommand="Zotero.cslEdit.openWindow()"/>
+			
+			<menu id="Zotero-EXT Menu" label="Zotero-EXTended">
+			<menupopup>
+			  <!-- Your menuitem goes here. -->
+				 <menuitem insertbefore="zotero-tb-actions-seperator" label="Batch edit tags.."
+				oncommand="Zotero.zoteroEXTended.openWindow()"/>
+				<menuitem insertbefore="zotero-tb-actions-seperator" label="Custom output styles.."
+				oncommand="Zotero.cslEdit.openWindow()"/>
+			</menupopup>
+		  </menu>
+			
 	</menupopup>
 	
 	<!-- Include the main extension logic -->
 	<script src="chrome://zotero/content/include.js"/>
 	<script src="chrome://zoteroEXTended/content/include.js"/>
 </overlay>
+
+
+		
