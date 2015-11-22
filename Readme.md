@@ -31,7 +31,15 @@ TODO: list features
 TODO: Write usage instructions
 
 ## Changelog
-
+November 21, 2015 
+<br />
++Edit tags feature implemented
+<br />
++Custom output styles feature implemented
+<br />
+<br />
++Submenu added to group ZoteroEXT features
+<br />
 November 11, 2015 
 <br />
 +Delete feature now fully functional
