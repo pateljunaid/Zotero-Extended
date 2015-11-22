@@ -11,6 +11,8 @@
         </tabs>
       
         <tabpanels>
+		
+			<!--Add Tags Tab-->
             <tabpanel id="add-tag-tab" orient="vertical">
                 <groupbox width="250" height="260" orient="vertical">
                     <label id = "enter-new-tag-label" value="Enter new tag:" control="add-tag-textbox"/>
@@ -27,10 +29,12 @@
                     <button label="Cancel" oncommand="window.close();"/>
                 </hbox>
             </tabpanel>
-          
+			
+			<!--Remove Tags Tab-->
             <tabpanel id="feature2-tab" orient="vertical">
-                <label value = "Please select tags to be deleted:"/>
-                <groupbox flex="1">
+                <label value = "Please select or search for tags to be deleted:"/>
+                <textbox id="remove-tag-textbox" placeholder="Search" onkeydown="Zotero.zoteroEXTended.searchTagsChange('remove-tag-list', 'remove-tag-textbox', 2);" onkeyup="Zotero.zoteroEXTended.searchTagsChange('remove-tag-list', 'remove-tag-textbox', 2);"/>
+				<groupbox flex="1">
                     <caption label = "Tag name"/>
                     <listbox id="remove-tag-list">
                         <!-- listitem tags will be populated in here-->
@@ -44,8 +48,10 @@
                 </box>
             </tabpanel>
           
+			<!--Edit Tags Tab-->
             <tabpanel id="edit-tag-tab" orient="vertical">
-                <label value = "Please edit the requested tags:"/>
+                <label value = "Please edit or search for the tags to be edited:"/>
+				<textbox id="edit-tag-textbox" placeholder="Search" onkeydown="Zotero.zoteroEXTended.searchTagsChange('edit-tag-list', 'edit-tag-textbox', 1);" onkeyup="Zotero.zoteroEXTended.searchTagsChange('edit-tag-list', 'edit-tag-textbox', 1);"/>
                 <groupbox flex="1">
                     <caption label = "Tag name"/>
                     <richlistbox id="edit-tag-list" width="200" height="200">
@@ -59,9 +65,10 @@
                 </box>
             </tabpanel>
            
+		   <!--Merge Tags Tab-->
             <tabpanel id="merge-tab" orient="vertical">
-                <label value = "Please select tags to be merged:"/>
-               
+                <label value = "Please select or search for tags to be merged:"/>
+               <textbox id="merge-tag-textbox" placeholder="Search" onkeydown="Zotero.zoteroEXTended.searchTagsChange('merge-tag-list', 'merge-tag-textbox', 2);" onkeyup="Zotero.zoteroEXTended.searchTagsChange('merge-tag-list', 'merge-tag-textbox', 2);"/>
                 <groupbox flex="1">
                     <caption label = "Tag name"/>
                     <listbox id="merge-tag-list">

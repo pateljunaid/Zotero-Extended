@@ -82,7 +82,77 @@ Zotero.zoteroEXTended = {
 		Zotero.zoteroEXTended.loadTags();
 	},
 	
-	
+	/*
+	* Render tags on changes detected within the search textbox
+	* @param {String} id - id of the DOM element
+	* @param {int} mode - 1 for edit, 2 for remove and merge, since edit uses textboxes instead of checkboxes
+	* 
+	*/
+	searchTagsChange: function(id, textboxId, mode){
+		//get the string that's being searched
+		searchTag = this.ZEXTwindow.document.getElementById(textboxId).value;
+		var list = this.ZEXTwindow.document.getElementById(id);
+		
+		while (list.firstChild)
+			list.removeChild(list.firstChild);
+		
+		//Try1 - This works but feels very inefficient. This is because we're getting all the tags and 
+		//then checking if searchTag is a substring in each of them, one by one. 
+		//There's gotta be better ways, as seen in the other tries below this one
+		var allTags = Zotero.Tags.getAll();
+		for (var id in allTags){
+			currentTag = allTags[id].name;
+			//check if the search string is a substring
+			if (currentTag.toLowerCase().indexOf(searchTag.toLowerCase()) > -1){	
+					
+					// Edit tags case
+					if (mode == 1){
+						var row = this.ZEXTwindow.document.createElement('textbox');
+						row.setAttribute('placeholder', 'new tag name');
+						row.setAttribute('value', currentTag);
+						row.setAttribute('id', currentTag);
+						row.setAttribute('onfocus', "this.select();"); // hightlight box when clicked								
+					}
+					
+					// Add, Merge tags case
+					else if (mode == 2){	
+						var row = this.ZEXTwindow.document.createElement('listitem');
+						row.setAttribute('label', currentTag);
+						row.setAttribute('type', 'checkbox');
+					}
+					
+					list.appendChild(row);
+			}
+		}
+		
+		//The stuff below is a mess
+		//Try2
+		
+		/*var s = new Zotero.Search();
+		s.addCondition('tag', 'contains', searchTag);
+		// Execute the search, results is an array of id's
+		var results = s.search();
+		// Return a list of Zotero items
+		var test = Zotero.Items.get(results);
+		
+		for (var next in test) {
+			alert(next);
+		}
+		
+		test.forEach(function(entry) {
+			alert(entry);
+		});*/
+		
+		//Try 3
+		
+		/*var ids = [];
+		ids = ids.concat(Object.values(Zotero.Tags.search(searchTag)));
+		ids.forEach(function (tag) {
+			alert(tag);
+			alert(tag.name);
+		});*/
+		
+	},
 
 	/*
 	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
