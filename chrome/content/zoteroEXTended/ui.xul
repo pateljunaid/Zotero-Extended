@@ -4,10 +4,10 @@
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <tabbox>
         <tabs>
-            <tab label="Add tag" oncommand="Zotero.zoteroEXTended.loadTags();"/>
-            <tab label="Remove" oncommand="Zotero.zoteroEXTended.loadTags();"/>
-            <tab label="Edit tag" oncommand="Zotero.zoteroEXTended.loadTags();"/>
-            <tab label="Merge tags" oncommand="Zotero.zoteroEXTended.loadTags();"/>
+            <tab label="Add tag" onclick="Zotero.zoteroEXTended.loadTags();"/>
+            <tab label="Remove" onclick="Zotero.zoteroEXTended.loadTags();"/>
+            <tab label="Edit tag" onclick="Zotero.zoteroEXTended.loadTags();"/>
+            <tab label="Merge tags" onclick="Zotero.zoteroEXTended.loadTags();"/>
         </tabs>
 
         <tabpanels>
