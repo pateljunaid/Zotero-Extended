@@ -109,7 +109,13 @@ Zotero.zoteroEXTended = {
 		//get the string that's being searched
 		searchTag = this.ZEXTwindow.document.getElementById(textboxId).value;
 		var list = this.ZEXTwindow.document.getElementById(id);
-		
+		var no_match = true;
+
+		//uncheck the select all box
+		/*var extract = id.split('-')[0]+'-tag-select';
+		this.ZEXTwindow.document.getElementById(extract).checked=false;
+		this.ZEXTwindow.document.getElementById(extract).label="Select All";*/
+
 		//Clear all tags from the tab
 		while (list.firstChild)
 			list.removeChild(list.firstChild);
@@ -122,7 +128,7 @@ Zotero.zoteroEXTended = {
 			currentTag = allTags[id].name;
 			//check if the search string is a substring
 			if (currentTag.toLowerCase().indexOf(searchTag.toLowerCase()) > -1){	
-					
+					no_match = false;
 					// Edit tags case
 					if (mode == 1){
 						var row = this.ZEXTwindow.document.createElement('textbox');
@@ -141,6 +147,13 @@ Zotero.zoteroEXTended = {
 					
 					list.appendChild(row);
 			}
+		}
+
+		//Display "No matching tags" if there aren't any matches
+		if (no_match){			
+			var row = this.ZEXTwindow.document.createElement('listitem');
+			row.setAttribute('label', "No matching tags");
+			list.appendChild(row);
 		}
 		
 		//The stuff below is a mess
@@ -181,7 +194,6 @@ Zotero.zoteroEXTended = {
 	selectToggle: function(boxId, domId){
 		var box = this.ZEXTwindow.document.getElementById(boxId);
 		var list = this.ZEXTwindow.document.getElementById(domId);
-		
 		if (box.checked){
 			box.checked=false;
 			box.label="Select All";	
@@ -195,23 +207,25 @@ Zotero.zoteroEXTended = {
 		while (list.firstChild)
 			list.removeChild(list.firstChild);
 		
+		//render all tags with either checked boxes or unchecked ones
 		var allTags = Zotero.Tags.getAll();
 		for (var id in allTags){
 			currentTag = allTags[id].name;
-			
-			//re-render by selecting/unselecting all
-			var row = this.ZEXTwindow.document.createElement('listitem');
-			row.setAttribute('label', currentTag);
-			row.setAttribute('type', 'checkbox');
-			
-			if (box.checked){
-				row.setAttribute('checked', true);
+			if (currentTag.toLowerCase().indexOf(searchTag.toLowerCase()) > -1){	
+				//re-render by selecting/unselecting all
+				var row = this.ZEXTwindow.document.createElement('listitem');
+				row.setAttribute('label', currentTag);
+				row.setAttribute('type', 'checkbox');
+				
+				if (box.checked){
+					row.setAttribute('checked', true);
+				}
+				else{
+					row.setAttribute('checked', false);
+				}
+				list.appendChild(row);
 			}
-			else{
-				row.setAttribute('checked', false);
-			}
-			list.appendChild(row);
-		}
+		}	
 		
 	},
 	
