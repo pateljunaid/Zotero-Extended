@@ -35,7 +35,8 @@
                 <textbox id="remove-tag-textbox" placeholder="Search" onkeydown="Zotero.zoteroEXTended.searchTagsChange('remove-tag-list', 'remove-tag-textbox', 2);" onkeyup="Zotero.zoteroEXTended.searchTagsChange('remove-tag-list', 'remove-tag-textbox', 2);"/>
                 <groupbox flex="1">
                     <caption label = "Tag name"/>
-                    <listbox id="remove-tag-list">
+                    <listitem id="remove-tag-select" label = "Select All" type="checkbox" onclick="Zotero.zoteroEXTended.selectToggle('remove-tag-select', 'remove-tag-list');"></listitem>
+					<listbox id="remove-tag-list">
                         <!-- listitem tags will be populated in here-->
                     </listbox>
                 </groupbox>
@@ -67,7 +68,8 @@
                 <label value = "Please select or search for tags to be merged:"/>
                <textbox id="merge-tag-textbox" placeholder="Search" onkeydown="Zotero.zoteroEXTended.searchTagsChange('merge-tag-list', 'merge-tag-textbox', 2);" onkeyup="Zotero.zoteroEXTended.searchTagsChange('merge-tag-list', 'merge-tag-textbox', 2);"/>
                 <groupbox flex="1">
-                    <caption label = "Tag name"/>
+                    <caption label = "Tag name"/>	
+					<listitem id="merge-tag-select" label = "Select All" type="checkbox" onclick="Zotero.zoteroEXTended.selectToggle('merge-tag-select', 'merge-tag-list');"></listitem>
                     <listbox id="merge-tag-list">
                         <!-- listitem tags will be populated in here-->
                     </listbox>

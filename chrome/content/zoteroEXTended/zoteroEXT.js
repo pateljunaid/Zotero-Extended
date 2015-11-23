@@ -50,6 +50,11 @@ Zotero.zoteroEXTended = {
 	removeButtonClick: function() {
 		//clear the search box
 		this.ZEXTwindow.document.getElementById('remove-tag-textbox').value ="";
+		//uncheck the select all box
+		this.ZEXTwindow.document.getElementById('remove-tag-select').checked=false;
+		this.ZEXTwindow.document.getElementById('remove-tag-select').label="Select All";
+		
+		
 		var selected = this.getSelectedTags('remove-tag-list');
 		Zotero.ExtBatch.removeTags(selected);
 	},
@@ -167,6 +172,49 @@ Zotero.zoteroEXTended = {
 		
 	},
 
+	
+	/*
+	* Toggle between SelectAll and Deselect All
+	* @param {String} domId - id of the DOM element
+	* @param {String} boxId - id of the checkbox
+	*/
+	selectToggle: function(boxId, domId){
+		var box = this.ZEXTwindow.document.getElementById(boxId);
+		var list = this.ZEXTwindow.document.getElementById(domId);
+		
+		if (box.checked){
+			box.checked=false;
+			box.label="Select All";	
+		}
+		else{
+			box.checked=true;
+			box.label="Deselect All";
+		}
+		
+		//clear all tags
+		while (list.firstChild)
+			list.removeChild(list.firstChild);
+		
+		var allTags = Zotero.Tags.getAll();
+		for (var id in allTags){
+			currentTag = allTags[id].name;
+			
+			//re-render by selecting/unselecting all
+			var row = this.ZEXTwindow.document.createElement('listitem');
+			row.setAttribute('label', currentTag);
+			row.setAttribute('type', 'checkbox');
+			
+			if (box.checked){
+				row.setAttribute('checked', true);
+			}
+			else{
+				row.setAttribute('checked', false);
+			}
+			list.appendChild(row);
+		}
+		
+	},
+	
 	/*
 	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
 	*/

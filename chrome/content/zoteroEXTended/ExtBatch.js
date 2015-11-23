@@ -80,6 +80,7 @@ Zotero.ExtBatch = {
 	mergeTags: function() {
 		//Clear the search box
 		Zotero.zoteroEXTended.ZEXTwindow.document.getElementById('merge-tag-textbox').value ="";
+		
 		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
 		
 		var newName = Zotero.zoteroEXTended.ZEXTwindow.prompt("Please enter the new tag name");
@@ -91,6 +92,8 @@ Zotero.ExtBatch = {
 		
 		this.removeTags(tags);
 		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
-
+		//Reset select all box
+		Zotero.zoteroEXTended.ZEXTwindow.document.getElementById('merge-tag-select').checked=false;
+		Zotero.zoteroEXTended.ZEXTwindow.document.getElementById('merge-tag-select').label="Select All";
 	}
 };
