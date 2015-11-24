@@ -29,14 +29,10 @@ function loadURI() {
 }
 
 window.addEventListener("load", function() {
+	document.title = "ZoteroEXT - Custom output styles";
 	browser = document.getElementById('my-browser');
-	
 	// align page title with title of shown document
 	browser.addEventListener("pageshow", function() {
-		document.title = (browser.contentDocument.title
-			? browser.contentDocument.title
-			: browser.contentDocument.location.href);
-		
 		/* NADEEM: Let's add a listener to the cslDownload event
 		 * 	Whenever the user downloads a csl it will download it here
 		 *		Using aux data.
