@@ -1,6 +1,7 @@
 # ZoteroEXTended
 
-![screenshot](http://i.imgur.com/qooTFVi.png)
+![screenshot](http://i.imgur.com/eN0BsVj.png)
+![screenshot](http://i.imgur.com/08GHmxa.png)
 
 ## Installation
 
