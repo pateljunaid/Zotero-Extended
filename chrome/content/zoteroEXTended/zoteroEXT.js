@@ -48,13 +48,6 @@ Zotero.zoteroEXTended = {
 	},
 	
 	removeButtonClick: function() {
-		//clear the search box
-		this.ZEXTwindow.document.getElementById('remove-tag-textbox').value ="";
-		//uncheck the select all box
-		this.ZEXTwindow.document.getElementById('remove-tag-select').checked=false;
-		this.ZEXTwindow.document.getElementById('remove-tag-select').label="Select All";
-		
-		
 		var selected = this.getSelectedTags('remove-tag-list');
 		Zotero.ExtBatch.removeTags(selected);
 	},
@@ -101,28 +94,23 @@ Zotero.zoteroEXTended = {
 	
 	/*
 	* Render tags on changes detected within the search textbox
-	* @param {String} id - id of the DOM element
+	* @param {String} id - ID of the DOM element
+	* @param {String} textboxId - ID of the searchbox
 	* @param {int} mode - 1 for edit, 2 for remove and merge, since edit uses textboxes instead of checkboxes
 	* 
 	*/
 	searchTagsChange: function(id, textboxId, mode){
 		//get the string that's being searched
-		searchTag = this.ZEXTwindow.document.getElementById(textboxId).value;
+		var searchTag = this.ZEXTwindow.document.getElementById(textboxId).value;
 		var list = this.ZEXTwindow.document.getElementById(id);
 		var no_match = true;
 
-		//uncheck the select all box
-		/*var extract = id.split('-')[0]+'-tag-select';
-		this.ZEXTwindow.document.getElementById(extract).checked=false;
-		this.ZEXTwindow.document.getElementById(extract).label="Select All";*/
+		this.resetSelectAll();
 
 		//Clear all tags from the tab
 		while (list.firstChild)
 			list.removeChild(list.firstChild);
 		
-		//Try1 - This works but feels very inefficient. This is because we're getting all the tags and 
-		//then checking if searchTag is a substring in each of them, one by one. 
-		//There's gotta be better ways, as seen in the other tries below this one
 		var allTags = Zotero.Tags.getAll();
 		for (var id in allTags){
 			currentTag = allTags[id].name;
@@ -155,34 +143,6 @@ Zotero.zoteroEXTended = {
 			row.setAttribute('label', "No matching tags");
 			list.appendChild(row);
 		}
-		
-		//The stuff below is a mess
-		//Try2
-		
-		/*var s = new Zotero.Search();
-		s.addCondition('tag', 'contains', searchTag);
-		// Execute the search, results is an array of id's
-		var results = s.search();
-		// Return a list of Zotero items
-		var test = Zotero.Items.get(results);
-		
-		for (var next in test) {
-			alert(next);
-		}
-		
-		test.forEach(function(entry) {
-			alert(entry);
-		});*/
-		
-		//Try 3
-		
-		/*var ids = [];
-		ids = ids.concat(Object.values(Zotero.Tags.search(searchTag)));
-		ids.forEach(function (tag) {
-			alert(tag);
-			alert(tag.name);
-		});*/
-		
 	},
 
 	
@@ -194,6 +154,9 @@ Zotero.zoteroEXTended = {
 	selectToggle: function(boxId, domId){
 		var box = this.ZEXTwindow.document.getElementById(boxId);
 		var list = this.ZEXTwindow.document.getElementById(domId);
+		var extract = domId.split('-')[0] + "-tag-textbox";
+		var searchTag = this.ZEXTwindow.document.getElementById(extract).value;
+		
 		if (box.checked){
 			box.checked=false;
 			box.label="Select All";	
@@ -209,14 +172,13 @@ Zotero.zoteroEXTended = {
 		
 		//render all tags with either checked boxes or unchecked ones
 		var allTags = Zotero.Tags.getAll();
+		
 		for (var id in allTags){
 			currentTag = allTags[id].name;
 			if (currentTag.toLowerCase().indexOf(searchTag.toLowerCase()) > -1){	
-				//re-render by selecting/unselecting all
 				var row = this.ZEXTwindow.document.createElement('listitem');
 				row.setAttribute('label', currentTag);
 				row.setAttribute('type', 'checkbox');
-				
 				if (box.checked){
 					row.setAttribute('checked', true);
 				}
@@ -225,14 +187,40 @@ Zotero.zoteroEXTended = {
 				}
 				list.appendChild(row);
 			}
-		}	
+			
+		}
+	},
+	
+	/*
+	* Resets searchbox content
+	*/
+	resetSearch: function(){
+		//Clear searchboxes
+		this.ZEXTwindow.document.getElementById('remove-tag-textbox').value ="";
+		this.ZEXTwindow.document.getElementById('edit-tag-textbox').value ="";
+		this.ZEXTwindow.document.getElementById('merge-tag-textbox').value ="";
+	},
+	
+	/*
+	* Resets Select All checkbox content
+	*/
+	resetSelectAll: function(){
+		//uncheck the select all box and reset the name
+		this.ZEXTwindow.document.getElementById('remove-tag-select').checked=false;
+		this.ZEXTwindow.document.getElementById('remove-tag-select').label="Select All";
 		
+		this.ZEXTwindow.document.getElementById('merge-tag-select').checked=false;
+		this.ZEXTwindow.document.getElementById('merge-tag-select').label="Select All";
 	},
 	
 	/*
 	* Updates and fills in the tags listboxes in remove-tag/edit-tag tabs
 	*/
-	loadTags: function() {
+	loadTags: function() {	
+		//clear fields
+		this.resetSearch();
+		this.resetSelectAll();
+		
 		var removeList = this.ZEXTwindow.document.getElementById('remove-tag-list');
 		var editList = this.ZEXTwindow.document.getElementById('edit-tag-list');
 		var mergeList = this.ZEXTwindow.document.getElementById('merge-tag-list');
