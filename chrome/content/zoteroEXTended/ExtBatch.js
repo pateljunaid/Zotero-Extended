@@ -79,15 +79,18 @@ Zotero.ExtBatch = {
 	*/
 	mergeTags: function() {
 		var tags = Zotero.zoteroEXTended.getSelectedTags('merge-tag-list');
-		
 		var newName = Zotero.zoteroEXTended.ZEXTwindow.prompt("Please enter the new tag name");
 		
-		for (var i = 0; i < tags.length; i++) {
-			var items = this.findIdsByTag(tags[i]);
-			this.addTags(items, newName);
+		// backup items that have checked tags
+		
+		var items = []
+		for(var i =0; i < tags.length; i++){
+			items = items.concat(this.findIdsByTag(tags[i]));
 		}
 		
-		this.removeTags(tags);
+		this.removeTags(tags); // remove checked tags
+		this.addTags(items, newName); // add new tag to backed up items
+		
 		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
 		//Reset select all box
 		Zotero.zoteroEXTended.ZEXTwindow.document.getElementById('merge-tag-select').checked=false;
