@@ -88,8 +88,10 @@ Zotero.ExtBatch = {
 			items = items.concat(this.findIdsByTag(tags[i]));
 		}
 		
-		this.removeTags(tags); // remove checked tags
-		this.addTags(items, newName); // add new tag to backed up items
+		if(newName != '' && newName != null) {
+			this.removeTags(tags); // remove checked tags
+			this.addTags(items, newName); // add new tag to backed up items
+		}
 		
 		Zotero.zoteroEXTended.loadTags(); // reload tags in all 3 tabs
 		//Reset select all box
